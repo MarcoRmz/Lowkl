@@ -19,14 +19,12 @@
 		F4DB03101D7216BF006D664B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4DB030E1D7216BF006D664B /* Main.storyboard */; };
 		F4DB03121D7216BF006D664B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4DB03111D7216BF006D664B /* Assets.xcassets */; };
 		F4DB03151D7216BF006D664B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4DB03131D7216BF006D664B /* LaunchScreen.storyboard */; };
-		F4DB031D1D72171B006D664B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4DB031C1D72171B006D664B /* GoogleService-Info.plist */; };
 		F4DB03301D7221F6006D664B /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB03271D7221F6006D664B /* GeoFire.m */; };
 		F4DB03311D7221F6006D664B /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB03291D7221F6006D664B /* GFBase32Utils.m */; };
 		F4DB03321D7221F6006D664B /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB032B1D7221F6006D664B /* GFGeoHash.m */; };
 		F4DB03331D7221F6006D664B /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB032D1D7221F6006D664B /* GFGeoHashQuery.m */; };
 		F4DB03341D7221F6006D664B /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB032F1D7221F6006D664B /* GFQuery.m */; };
 		F4DB03371D7223E7006D664B /* FindTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB03361D7223E7006D664B /* FindTourViewController.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +62,6 @@
 		F4DB032F1D7221F6006D664B /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
 		F4DB03351D7222EC006D664B /* Lowlk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lowlk-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4DB03361D7223E7006D664B /* FindTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTourViewController.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +120,6 @@
 		F4DB03091D7216BF006D664B /* Lowkl */ = {
 			isa = PBXGroup;
 			children = (
-
 				F4DB031E1D7221F6006D664B /* GeoFire */,
 				A9C350B61D7226A3006BAD03 /* GoogleService-Info.plist */,
 				F4DB030A1D7216BF006D664B /* AppDelegate.swift */,
@@ -453,7 +449,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -14,6 +14,12 @@
 		F4DB03121D7216BF006D664B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4DB03111D7216BF006D664B /* Assets.xcassets */; };
 		F4DB03151D7216BF006D664B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4DB03131D7216BF006D664B /* LaunchScreen.storyboard */; };
 		F4DB031D1D72171B006D664B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4DB031C1D72171B006D664B /* GoogleService-Info.plist */; };
+		F4DB03301D7221F6006D664B /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB03271D7221F6006D664B /* GeoFire.m */; };
+		F4DB03311D7221F6006D664B /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB03291D7221F6006D664B /* GFBase32Utils.m */; };
+		F4DB03321D7221F6006D664B /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB032B1D7221F6006D664B /* GFGeoHash.m */; };
+		F4DB03331D7221F6006D664B /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB032D1D7221F6006D664B /* GFGeoHashQuery.m */; };
+		F4DB03341D7221F6006D664B /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB032F1D7221F6006D664B /* GFQuery.m */; };
+		F4DB03371D7223E7006D664B /* FindTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB03361D7223E7006D664B /* FindTourViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,23 @@
 		F4DB03141D7216BF006D664B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4DB03161D7216BF006D664B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4DB031C1D72171B006D664B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4DB03201D7221F6006D664B /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
+		F4DB03211D7221F6006D664B /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
+		F4DB03221D7221F6006D664B /* GFQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFQuery.h; sourceTree = "<group>"; };
+		F4DB03231D7221F6006D664B /* GFRegionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFRegionQuery.h; sourceTree = "<group>"; };
+		F4DB03241D7221F6006D664B /* GeoFire-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire-Prefix.pch"; sourceTree = "<group>"; };
+		F4DB03261D7221F6006D664B /* GeoFire+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire+Private.h"; sourceTree = "<group>"; };
+		F4DB03271D7221F6006D664B /* GeoFire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoFire.m; sourceTree = "<group>"; };
+		F4DB03281D7221F6006D664B /* GFBase32Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFBase32Utils.h; sourceTree = "<group>"; };
+		F4DB03291D7221F6006D664B /* GFBase32Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFBase32Utils.m; sourceTree = "<group>"; };
+		F4DB032A1D7221F6006D664B /* GFGeoHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHash.h; sourceTree = "<group>"; };
+		F4DB032B1D7221F6006D664B /* GFGeoHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHash.m; sourceTree = "<group>"; };
+		F4DB032C1D7221F6006D664B /* GFGeoHashQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHashQuery.h; sourceTree = "<group>"; };
+		F4DB032D1D7221F6006D664B /* GFGeoHashQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHashQuery.m; sourceTree = "<group>"; };
+		F4DB032E1D7221F6006D664B /* GFQuery+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GFQuery+Private.h"; sourceTree = "<group>"; };
+		F4DB032F1D7221F6006D664B /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
+		F4DB03351D7222EC006D664B /* Lowlk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lowlk-Bridging-Header.h"; sourceTree = "<group>"; };
+		F4DB03361D7223E7006D664B /* FindTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTourViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,15 +103,56 @@
 		F4DB03091D7216BF006D664B /* Lowkl */ = {
 			isa = PBXGroup;
 			children = (
+				F4DB031E1D7221F6006D664B /* GeoFire */,
 				F4DB030A1D7216BF006D664B /* AppDelegate.swift */,
 				F4DB030C1D7216BF006D664B /* ViewController.swift */,
+				F4DB03361D7223E7006D664B /* FindTourViewController.swift */,
 				F4DB030E1D7216BF006D664B /* Main.storyboard */,
 				F4DB03111D7216BF006D664B /* Assets.xcassets */,
 				F4DB03131D7216BF006D664B /* LaunchScreen.storyboard */,
 				F4DB03161D7216BF006D664B /* Info.plist */,
 				F4DB031C1D72171B006D664B /* GoogleService-Info.plist */,
+				F4DB03351D7222EC006D664B /* Lowlk-Bridging-Header.h */,
 			);
 			path = Lowkl;
+			sourceTree = "<group>";
+		};
+		F4DB031E1D7221F6006D664B /* GeoFire */ = {
+			isa = PBXGroup;
+			children = (
+				F4DB031F1D7221F6006D664B /* API */,
+				F4DB03241D7221F6006D664B /* GeoFire-Prefix.pch */,
+				F4DB03251D7221F6006D664B /* Implementation */,
+			);
+			path = GeoFire;
+			sourceTree = "<group>";
+		};
+		F4DB031F1D7221F6006D664B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F4DB03201D7221F6006D664B /* GeoFire.h */,
+				F4DB03211D7221F6006D664B /* GFCircleQuery.h */,
+				F4DB03221D7221F6006D664B /* GFQuery.h */,
+				F4DB03231D7221F6006D664B /* GFRegionQuery.h */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F4DB03251D7221F6006D664B /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				F4DB03261D7221F6006D664B /* GeoFire+Private.h */,
+				F4DB03271D7221F6006D664B /* GeoFire.m */,
+				F4DB03281D7221F6006D664B /* GFBase32Utils.h */,
+				F4DB03291D7221F6006D664B /* GFBase32Utils.m */,
+				F4DB032A1D7221F6006D664B /* GFGeoHash.h */,
+				F4DB032B1D7221F6006D664B /* GFGeoHash.m */,
+				F4DB032C1D7221F6006D664B /* GFGeoHashQuery.h */,
+				F4DB032D1D7221F6006D664B /* GFGeoHashQuery.m */,
+				F4DB032E1D7221F6006D664B /* GFQuery+Private.h */,
+				F4DB032F1D7221F6006D664B /* GFQuery.m */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +190,7 @@
 				TargetAttributes = {
 					F4DB03061D7216BF006D664B = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 6HXT9ZSCM9;
 					};
 				};
 			};
@@ -214,8 +279,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4DB03311D7221F6006D664B /* GFBase32Utils.m in Sources */,
+				F4DB03371D7223E7006D664B /* FindTourViewController.swift in Sources */,
 				F4DB030D1D7216BF006D664B /* ViewController.swift in Sources */,
+				F4DB03321D7221F6006D664B /* GFGeoHash.m in Sources */,
 				F4DB030B1D7216BF006D664B /* AppDelegate.swift in Sources */,
+				F4DB03301D7221F6006D664B /* GeoFire.m in Sources */,
+				F4DB03331D7221F6006D664B /* GFGeoHashQuery.m in Sources */,
+				F4DB03341D7221F6006D664B /* GFQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,10 +402,14 @@
 			baseConfigurationReference = 7E60BA70C879E1DCFC35043C /* Pods-Lowkl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lowkl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jorge-perales.Lowkl";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lowkl.Lowkl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lowkl/Lowlk-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -343,10 +418,14 @@
 			baseConfigurationReference = CDCB8BCED3E18E8096C805FE /* Pods-Lowkl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lowkl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jorge-perales.Lowkl";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lowkl.Lowkl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lowkl/Lowlk-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -32,10 +32,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Give Tour-->
         <scene sceneID="33k-AC-Ea4">
             <objects>
-                <viewController id="3FZ-Pn-46d" sceneMemberID="viewController">
+                <viewController id="3FZ-Pn-46d" customClass="GiveTour" customModule="Lowkl" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UFi-g3-zKV"/>
                         <viewControllerLayoutGuide type="bottom" id="9xo-aq-gJx"/>
@@ -43,9 +43,24 @@
                     <view key="view" contentMode="scaleToFill" id="x0D-kj-kkg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipk-8o-VUX">
+                                <rect key="frame" x="173" y="100" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lu4-WJ-VnN">
+                                <rect key="frame" x="79" y="145" width="230" height="119"/>
+                            </pickerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="pickerPlace" destination="lu4-WJ-VnN" id="m9J-gG-xdh"/>
+                        <outlet property="placeChosen" destination="Ipk-8o-VUX" id="skk-W0-hZF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYB-cM-jh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

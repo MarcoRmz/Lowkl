@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		390B7C693F2FC94E5C680DAA /* Pods_Lowkl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54081175611C38B1B98075AA /* Pods_Lowkl.framework */; };
 		8A2509DA1D7222750045F741 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2509D91D7222750045F741 /* UserProfile.swift */; };
+		8A55B5B51D7243E600A112E3 /* GiveTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55B5B41D7243E600A112E3 /* GiveTour.swift */; };
 		F4DB030B1D7216BF006D664B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB030A1D7216BF006D664B /* AppDelegate.swift */; };
 		F4DB030D1D7216BF006D664B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB030C1D7216BF006D664B /* ViewController.swift */; };
 		F4DB03101D7216BF006D664B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4DB030E1D7216BF006D664B /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		54081175611C38B1B98075AA /* Pods_Lowkl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lowkl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E60BA70C879E1DCFC35043C /* Pods-Lowkl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lowkl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lowkl/Pods-Lowkl.debug.xcconfig"; sourceTree = "<group>"; };
 		8A2509D91D7222750045F741 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = ../../../../UserProfile.swift; sourceTree = "<group>"; };
+		8A55B5B41D7243E600A112E3 /* GiveTour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveTour.swift; sourceTree = "<group>"; };
 		CDCB8BCED3E18E8096C805FE /* Pods-Lowkl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lowkl.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lowkl/Pods-Lowkl.release.xcconfig"; sourceTree = "<group>"; };
 		F4DB03071D7216BF006D664B /* Lowkl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lowkl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DB030A1D7216BF006D664B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				F4DB03161D7216BF006D664B /* Info.plist */,
 				F4DB031C1D72171B006D664B /* GoogleService-Info.plist */,
 				8A2509D91D7222750045F741 /* UserProfile.swift */,
+				8A55B5B41D7243E600A112E3 /* GiveTour.swift */,
 			);
 			path = Lowkl;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				F4DB030D1D7216BF006D664B /* ViewController.swift in Sources */,
 				F4DB030B1D7216BF006D664B /* AppDelegate.swift in Sources */,
+				8A55B5B51D7243E600A112E3 /* GiveTour.swift in Sources */,
 				8A2509DA1D7222750045F741 /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

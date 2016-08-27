@@ -30,9 +30,9 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>FacebookAppID</key>
-	<string>157847324574963</string>
+	<string>173703623057720</string>
 	<key>FacebookDisplayName</key>
-	<string>Uber</string>
+	<string>Lowkl</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -70,9 +70,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need to access your location for the Uber taxi to arrive at your location.</string>
+	<string>We need to access your location for the tour to take place.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need to access your location for the Uber taxi to arrive at your location.</string>
+	<string>We need to access your location for the tour to take place.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

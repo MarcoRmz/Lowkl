@@ -14,6 +14,5 @@ target 'Uber' do
   pod 'TextFieldEffects'
   pod 'PermissionScope'
   pod 'SVProgressHUD'
-  pod 'Spring'
 
 end

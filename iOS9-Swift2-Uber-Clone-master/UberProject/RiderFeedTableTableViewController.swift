@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class RiderFeedTableTableViewController: UITableViewController {
 
@@ -34,78 +33,78 @@ class RiderFeedTableTableViewController: UITableViewController {
     
     private func retrieveAllRelevantRides() -> Void {
         // Get current user's location
-        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint, error) -> Void in
-            if let geoPoint = geoPoint {
-                
-                let rideQuery:PFQuery = PFQuery(className: "Rides")
-                rideQuery.whereKey("pickUpCoordinates", nearGeoPoint: geoPoint, withinMiles: 10.0)
-                rideQuery.whereKey("status", equalTo: RideStatus.REQUESTED.rawValue)
-                
-                rideQuery.limit = 5
-                
-                rideQuery.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
-                    self.ridesArray.removeAll()
-                    if error != nil {
-                        self.showAlert("Error retrieving ride", message: (error?.localizedDescription)!)
-                    } else {
-                        if let objects = results {
-                            var rideData:RideData
-                            
-                            for object in objects {
-                                rideData = RideData()
-                                rideData.setObjectId(object.objectId!)
-                                rideData.setAddress(object["pickUpAddress"] as! String)
-                                if let riderGeoPoint = object["pickUpCoordinates"] as? PFGeoPoint {
-                                    let riderCoordinates = CLLocationCoordinate2DMake(riderGeoPoint.latitude, riderGeoPoint.longitude)
-                                    rideData.setCoordinates(riderCoordinates)
-                                }
-                                
-                                rideData.setCurrentRideStatus(RideStatus(rawValue: object["status"] as! String)!)
-                                
-                                rideData.setRiderUserId(object["riderUserId"] as! String)
-                                
-                                // Load the user image
-                                self.retrieveUserImage(rideData)
-                                
-                                // Add to array
-                                self.ridesArray.append(rideData)
-                            }
-                            
-                            self.ridesTableView.reloadData()
-                        }
-                    }
-                })
-            }
-        }
+//        PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint, error) -> Void in
+//            if let geoPoint = geoPoint {
+//                
+//                let rideQuery:PFQuery = PFQuery(className: "Rides")
+//                rideQuery.whereKey("pickUpCoordinates", nearGeoPoint: geoPoint, withinMiles: 10.0)
+//                rideQuery.whereKey("status", equalTo: RideStatus.REQUESTED.rawValue)
+//                
+//                rideQuery.limit = 5
+//                
+//                rideQuery.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
+//                    self.ridesArray.removeAll()
+//                    if error != nil {
+//                        self.showAlert("Error retrieving ride", message: (error?.localizedDescription)!)
+//                    } else {
+//                        if let objects = results {
+//                            var rideData:RideData
+//                            
+//                            for object in objects {
+//                                rideData = RideData()
+//                                rideData.setObjectId(object.objectId!)
+//                                rideData.setAddress(object["pickUpAddress"] as! String)
+//                                if let riderGeoPoint = object["pickUpCoordinates"] as? PFGeoPoint {
+//                                    let riderCoordinates = CLLocationCoordinate2DMake(riderGeoPoint.latitude, riderGeoPoint.longitude)
+//                                    rideData.setCoordinates(riderCoordinates)
+//                                }
+//                                
+//                                rideData.setCurrentRideStatus(RideStatus(rawValue: object["status"] as! String)!)
+//                                
+//                                rideData.setRiderUserId(object["riderUserId"] as! String)
+//                                
+//                                // Load the user image
+//                                self.retrieveUserImage(rideData)
+//                                
+//                                // Add to array
+//                                self.ridesArray.append(rideData)
+//                            }
+//                            
+//                            self.ridesTableView.reloadData()
+//                        }
+//                    }
+//                })
+//            }
+//        }
     }
     
     private func retrieveUserImage(rideData:RideData) -> Void {
     
-        let userQuery = PFUser.query()
-        userQuery?.getObjectInBackgroundWithId(rideData.getRiderUserId()!, block: { (object, error) -> Void in
-            if error != nil {
-                self.showAlert("Error retrieving user", message: (error?.localizedDescription)!)
-            } else {
-                if let user = object as? PFUser {
-                    
-                    rideData.setRiderName(user["name"] as! String)
-                    
-                    if let imageFile = user["picture"] as? PFFile {
-                        imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                            if error != nil {
-                                self.showAlert("Error retrieving user image", message: (error?.localizedDescription)!)
-                            } else {
-                                if let downloadedImage = UIImage(data : data!) {
-                                    rideData.setRiderImage(downloadedImage)
-                                    self.ridesTableView.reloadData()
-                                }
-                            }
-                        })
-                    }
-                    
-                }
-            }
-        })
+//        let userQuery = PFUser.query()
+//        userQuery?.getObjectInBackgroundWithId(rideData.getRiderUserId()!, block: { (object, error) -> Void in
+//            if error != nil {
+//                self.showAlert("Error retrieving user", message: (error?.localizedDescription)!)
+//            } else {
+//                if let user = object as? PFUser {
+//                    
+//                    rideData.setRiderName(user["name"] as! String)
+//                    
+//                    if let imageFile = user["picture"] as? PFFile {
+//                        imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//                            if error != nil {
+//                                self.showAlert("Error retrieving user image", message: (error?.localizedDescription)!)
+//                            } else {
+//                                if let downloadedImage = UIImage(data : data!) {
+//                                    rideData.setRiderImage(downloadedImage)
+//                                    self.ridesTableView.reloadData()
+//                                }
+//                            }
+//                        })
+//                    }
+//                    
+//                }
+//            }
+//        })
         
     }
     
@@ -175,31 +174,31 @@ class RiderFeedTableTableViewController: UITableViewController {
         
         let currentRideData = self.ridesArray[self.acceptedRideIndex]
         
-        let rideQuery:PFQuery = PFQuery(className: "Rides")
-        
-        rideQuery.getObjectInBackgroundWithId(currentRideData.getObjectId()) { (result, error) -> Void in
-            if error != nil {
-                self.showAlert("Error getting ride information", message: (error?.localizedDescription)!)
-            } else if let object = result {
-                if let currentStatus = object["status"] as? String {
-                    if currentStatus == RideStatus.REQUESTED.rawValue {
-                        object["status"] = RideStatus.ACCEPTED.rawValue
-                        object["driverUserId"] = PFUser.currentUser()?.objectId
-                        
-                        object.saveInBackgroundWithBlock({ (success, error) -> Void in
-                            if error != nil {
-                                self.showAlert("Error accepting ride", message: (error?.localizedDescription)!)
-                            } else {
-                                currentRideData.setCurrentRideStatus(RideStatus.ACCEPTED)
-                                // Segue to the next details view controller
-                                self.performSegueWithIdentifier("showRideDetails", sender: self)
-                            }
-                        })
-                    }
-                }
-                
-            }
-        }
+//        let rideQuery:PFQuery = PFQuery(className: "Rides")
+//        
+//        rideQuery.getObjectInBackgroundWithId(currentRideData.getObjectId()) { (result, error) -> Void in
+//            if error != nil {
+//                self.showAlert("Error getting ride information", message: (error?.localizedDescription)!)
+//            } else if let object = result {
+//                if let currentStatus = object["status"] as? String {
+//                    if currentStatus == RideStatus.REQUESTED.rawValue {
+//                        object["status"] = RideStatus.ACCEPTED.rawValue
+//                        object["driverUserId"] = PFUser.currentUser()?.objectId
+//                        
+//                        object.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                            if error != nil {
+//                                self.showAlert("Error accepting ride", message: (error?.localizedDescription)!)
+//                            } else {
+//                                currentRideData.setCurrentRideStatus(RideStatus.ACCEPTED)
+//                                // Segue to the next details view controller
+//                                self.performSegueWithIdentifier("showRideDetails", sender: self)
+//                            }
+//                        })
+//                    }
+//                }
+//                
+//            }
+//        }
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -207,9 +206,9 @@ class RiderFeedTableTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "logOut"{
-            PFUser.logOut()
-            let viewController:ViewController = segue.destinationViewController as! ViewController
-            viewController.navigationItem.hidesBackButton = true
+//            PFUser.logOut()
+//            let viewController:ViewController = segue.destinationViewController as! ViewController
+//            viewController.navigationItem.hidesBackButton = true
 
         }
         

@@ -8,35 +8,13 @@
 */
 
 import UIKit
-import Parse
 import FBSDKCoreKit
-import ParseFacebookUtilsV4
 
 class ViewController: UIViewController {
 
     @IBAction func facebookLoginClicked(sender: AnyObject) {
         // Set up permissions required
-        let permissions = ["public_profile", "email"]
         
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) { (loggedInUser, error) -> Void in
-            if let error = error {
-                print("Error while logging to Facebook: \(error)")
-            } else {
-                if let user = loggedInUser {
-                    if let isDriver = user["isDriver"] as? Bool {
-                        print("User already signed up for Uber and logged in through Facebook with this request: \(user)")
-                        if isDriver == true {
-                            self.performSegueWithIdentifier("showDriverView", sender: self)
-                        } else {
-                            self.performSegueWithIdentifier("showRiderView", sender: self)
-                        }
-                        
-                    } else {
-                        self.performSegueWithIdentifier("showSignUpView", sender: self)
-                    }
-                }
-            }
-        }
     }
    
     override func viewDidLoad() {
@@ -50,17 +28,17 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if let _ = PFUser.currentUser()?.username {
-            if let isDriver = PFUser.currentUser()?["isDriver"] as? Bool{
-                print("User already signed up for Uber")
-                if isDriver == true {
-                    self.performSegueWithIdentifier("showDriverView", sender: self)
-                } else {
-                    self.performSegueWithIdentifier("showRiderView", sender: self)
-                }
-            } else {
-                self.performSegueWithIdentifier("showSignUpView", sender: self)
-            }
-        }
+//        if let _ = PFUser.currentUser()?.username {
+//            if let isDriver = PFUser.currentUser()?["isDriver"] as? Bool{
+//                print("User already signed up for Uber")
+//                if isDriver == true {
+//                    self.performSegueWithIdentifier("showDriverView", sender: self)
+//                } else {
+//                    self.performSegueWithIdentifier("showRiderView", sender: self)
+//                }
+//            } else {
+//                self.performSegueWithIdentifier("showSignUpView", sender: self)
+//            }
+//        }
     }
 }

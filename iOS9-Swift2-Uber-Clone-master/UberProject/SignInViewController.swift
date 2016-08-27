@@ -6,7 +6,6 @@
 //  Copyright © 2015 Parse. All rights reserved.
 //
 
-import Parse
 
 class SignInViewController: UIViewController {
 
@@ -17,20 +16,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func signUpClicked(sender: AnyObject) {
         
-        do {
-            PFUser.currentUser()?["isDriver"] = self.isDriver.on
-            try PFUser.currentUser()?.save()
-            
-            print("Signed up current user with isDriver: \(self.isDriver.on)")
-            if self.isDriver.on == true {
-                    self.performSegueWithIdentifier("showDriverView", sender: self)
-                } else {
-                    self.performSegueWithIdentifier("showRiderView", sender: self)
-                }
-            
-        } catch {
-            print("Error while signing up the user: \(error)")
-        }
+        
     }
  
     override func viewDidLoad() {
@@ -41,14 +27,14 @@ class SignInViewController: UIViewController {
                 print("Error while making Graph request to Facebook")
             } else {
                 if let result = object {
-                    PFUser.currentUser()?["name"] = result["name"]
-                    PFUser.currentUser()?["email"] = result["email"]
-                    PFUser.currentUser()?["gender"] = result["gender"]
-                    
-                    PFUser.currentUser()?.saveInBackground()
-                    
-                    let userId = result["id"] as! String
-                    self.saveUserImageInBackground(userId)
+//                    PFUser.currentUser()?["name"] = result["name"]
+//                    PFUser.currentUser()?["email"] = result["email"]
+//                    PFUser.currentUser()?["gender"] = result["gender"]
+//                    
+//                    PFUser.currentUser()?.saveInBackground()
+//                    
+//                    let userId = result["id"] as! String
+//                    self.saveUserImageInBackground(userId)
                 }
             }
         }
@@ -61,16 +47,16 @@ class SignInViewController: UIViewController {
             if let data = NSData(contentsOfURL: facebookProfileUrl){
                 self.userPictureView.image = UIImage(data: data)
                 
-                let imageFile:PFFile = PFFile(data: data)!
-                PFUser.currentUser()?["picture"] = imageFile
-                PFUser.currentUser()?.saveInBackground()
+//                let imageFile:PFFile = PFFile(data: data)!
+//                PFUser.currentUser()?["picture"] = imageFile
+//                PFUser.currentUser()?.saveInBackground()
             }
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "logOut"{
-            PFUser.logOut()
+            
         }
     }
 }

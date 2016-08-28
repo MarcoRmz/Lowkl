@@ -7,20 +7,94 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseStorage
+import FBSDKCoreKit
 
 class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var imageUser: UIImageView!
-    @IBOutlet var nameUser: UILabel!
+    @IBOutlet weak var imageUser: UIImageView!
+    @IBOutlet weak var nameUser: UILabel!
+    @IBOutlet weak var emailUser: UILabel!
     
     @IBOutlet var tableViewTaken: UITableView!
     @IBOutlet var tableViewGiven: UITableView!
+    
+    @IBAction func didTapLogoutButton(sender: AnyObject) {
+        //Signs user out of FireBase
+        try! FIRAuth.auth()!.signOut()
+        
+        //Sign user out of Facebook
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+        
+        //Send user back to home screen
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LoginView")
+        
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
     
     var  taken = [String]()
     var  given = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imageUser.layer.cornerRadius = self.imageUser.frame.size.width / 2
+        self.imageUser.clipsToBounds = true
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            // Reference to Firebase storage
+            let storage = FIRStorage.storage()
+            let storageRef = storage.referenceForURL("gs://lowkl-1314c.appspot.com")
+            let profilePictureRef = storageRef.child(user.uid+"/profilePicture.jpg")
+            
+            // User is signed in.
+            let name = user.displayName
+            let email = user.email
+            
+            self.nameUser.text = name
+            self.emailUser.text = email
+            
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            profilePictureRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
+                if (error == nil) {
+                    print("Unable to download image")
+                } else {
+                    if (data != nil) {
+                        self.imageUser.image = UIImage(data: data!)
+                    }
+                }
+            }
+            
+            if (self.imageUser.image == nil) {
+                var profilePicture = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":"300", "width":"300","redirect":false], HTTPMethod: "GET")
+                profilePicture!.startWithCompletionHandler({(connection, result, error) -> Void in
+                    // Handle the result
+                    if (error == nil) {
+                        let dictionary = result as? NSDictionary
+                        let data = dictionary?.objectForKey("data")
+                        
+                        let photoUrl = (data?.objectForKey("url"))! as! String
+                        if let imageData = NSData(contentsOfURL: NSURL(string: photoUrl)!) {
+                            let uploadTask = profilePictureRef.putData(imageData, metadata: nil) {
+                                metadata,error in
+                                if (error == nil) {
+                                    let downloadUrl = metadata!.downloadURL
+                                } else {
+                                    print("Error downloading image")
+                                }
+                            }
+                            self.imageUser.image = UIImage(data: imageData)
+                        }
+                    }
+                })
+            }
+        } else {
+            // No user is signed in.
+        }
+        
         self.tableViewTaken.delegate = self
         self.tableViewTaken.dataSource = self
         

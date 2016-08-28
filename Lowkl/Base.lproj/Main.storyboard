@@ -418,7 +418,7 @@
                                 <rect key="frame" x="282" y="51" width="53" height="50"/>
                                 <state key="normal" backgroundImage="addImg"/>
                                 <connections>
-                                    <segue destination="3FZ-Pn-46d" kind="show" id="sxf-PB-b66"/>
+                                    <action selector="addTour:" destination="Pzl-Z5-kKM" eventType="touchUpInside" id="56j-1y-Kre"/>
                                 </connections>
                             </button>
                         </subviews>

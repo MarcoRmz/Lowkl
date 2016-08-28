@@ -14,7 +14,6 @@
 		A9C350B51D722607006BAD03 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350B41D722607006BAD03 /* FBSDKCoreKit.framework */; };
 		A9C350B91D7227F4006BAD03 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350B81D7227F4006BAD03 /* Bolts.framework */; };
 		A9C350BB1D72396F006BAD03 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350BA1D72396F006BAD03 /* FBSDKLoginKit.framework */; };
-		F4AB53CA1D72618F00DA9BA2 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB53C91D72618F00DA9BA2 /* UserProfile.swift */; };
 		F4AB53CC1D7265CA00DA9BA2 /* TourAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB53CB1D7265CA00DA9BA2 /* TourAnnotation.swift */; };
 		F4DB030B1D7216BF006D664B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB030A1D7216BF006D664B /* AppDelegate.swift */; };
 		F4DB030D1D7216BF006D664B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB030C1D7216BF006D664B /* ViewController.swift */; };
@@ -27,6 +26,7 @@
 		F4DB03331D7221F6006D664B /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB032D1D7221F6006D664B /* GFGeoHashQuery.m */; };
 		F4DB03341D7221F6006D664B /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB032F1D7221F6006D664B /* GFQuery.m */; };
 		F4DB03371D7223E7006D664B /* FindTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB03361D7223E7006D664B /* FindTourViewController.swift */; };
+		F4E6BDA91D72A5B20098C986 /* TourDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6BDA81D72A5B20098C986 /* TourDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,6 @@
 		A9C350B81D7227F4006BAD03 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		A9C350BA1D72396F006BAD03 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		CDCB8BCED3E18E8096C805FE /* Pods-Lowkl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lowkl.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lowkl/Pods-Lowkl.release.xcconfig"; sourceTree = "<group>"; };
-		F4AB53C91D72618F00DA9BA2 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F4AB53CB1D7265CA00DA9BA2 /* TourAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourAnnotation.swift; sourceTree = "<group>"; };
 		F4DB03071D7216BF006D664B /* Lowkl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lowkl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DB030A1D7216BF006D664B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		F4DB032F1D7221F6006D664B /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
 		F4DB03351D7222EC006D664B /* Lowlk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lowlk-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4DB03361D7223E7006D664B /* FindTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTourViewController.swift; sourceTree = "<group>"; };
+		F4E6BDA81D72A5B20098C986 /* TourDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,12 +127,12 @@
 				F4DB030A1D7216BF006D664B /* AppDelegate.swift */,
 				F4DB030C1D7216BF006D664B /* ViewController.swift */,
 				F4DB03361D7223E7006D664B /* FindTourViewController.swift */,
+				F4E6BDA81D72A5B20098C986 /* TourDetailViewController.swift */,
 				F4AB53CB1D7265CA00DA9BA2 /* TourAnnotation.swift */,
 				F4DB030E1D7216BF006D664B /* Main.storyboard */,
 				F4DB03111D7216BF006D664B /* Assets.xcassets */,
 				F4DB03131D7216BF006D664B /* LaunchScreen.storyboard */,
 				F4DB03161D7216BF006D664B /* Info.plist */,
-				F4DB031C1D72171B006D664B /* GoogleService-Info.plist */,
 				8A55B5B41D7243E600A112E3 /* GiveTour.swift */,
 				F4DB03351D7222EC006D664B /* Lowlk-Bridging-Header.h */,
 				8A8480E41D72689F007713FC /* UserProfile.swift */,
@@ -309,10 +309,10 @@
 				F4DB030D1D7216BF006D664B /* ViewController.swift in Sources */,
 				F4DB03321D7221F6006D664B /* GFGeoHash.m in Sources */,
 				F4DB030B1D7216BF006D664B /* AppDelegate.swift in Sources */,
-				F4AB53CA1D72618F00DA9BA2 /* UserProfile.swift in Sources */,
 				8A55B5B51D7243E600A112E3 /* GiveTour.swift in Sources */,
 				F4DB03301D7221F6006D664B /* GeoFire.m in Sources */,
 				F4AB53CC1D7265CA00DA9BA2 /* TourAnnotation.swift in Sources */,
+				F4E6BDA91D72A5B20098C986 /* TourDetailViewController.swift in Sources */,
 				F4DB03331D7221F6006D664B /* GFGeoHashQuery.m in Sources */,
 				F4DB03341D7221F6006D664B /* GFQuery.m in Sources */,
 			);

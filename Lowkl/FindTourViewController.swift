@@ -75,8 +75,9 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         var annotationView: MKAnnotationView?
         
         if annotation.isKindOfClass(MKUserLocation.self) {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
-            //annotationView?.image = UIImage(named: "")
+//            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
+//            annotationView?.image = UIImage(named: "addImg")
+            
         } else if let deqAnno = mapView.dequeueReusableAnnotationViewWithIdentifier(annoIdentifier) {
             annotationView = deqAnno
             

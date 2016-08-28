@@ -17,5 +17,4 @@ target 'Lowkl' do
   pod 'GoogleMaps'
   pod 'M13Checkbox', '~> 2.1'
   pod 'MGSwipeTableCell'
-  pod 'GooglePlaces', '~> 2.0'
 end

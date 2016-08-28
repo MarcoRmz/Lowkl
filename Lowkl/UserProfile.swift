@@ -178,10 +178,17 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        /*let cell = tableView.dequeueReusableCellWithIdentifier("CellToursTaken", forIndexPath: indexPath)
-        let take = taken[indexPath.row]
-        cell.textLabel?.text = take
-        return cell*/
+        if(tableView.isEqual(tableViewTaken)){
+            let cell = tableView.dequeueReusableCellWithIdentifier("CellToursTaken", forIndexPath: indexPath)
+            let take = taken[indexPath.row]
+            cell.textLabel?.text = take
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCellWithIdentifier("CellToursGiven", forIndexPath: indexPath)
+            let give = given[indexPath.row]
+            cell.textLabel?.text = give
+            return cell
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -194,9 +201,5 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         }else{
             return given.count
         }
-        
     }
-    
-    
-    
 }

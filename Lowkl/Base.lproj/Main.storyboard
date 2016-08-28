@@ -360,6 +360,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="emailUser" destination="Kpf-Az-akm" id="bln-Kl-oTz"/>
+                        <outlet property="guideButton" destination="IOq-12-ALQ" id="fDW-rF-GOt"/>
                         <outlet property="imageUser" destination="TJV-OL-guB" id="pT5-cK-Bo4"/>
                         <outlet property="nameUser" destination="Vxa-FG-w1r" id="6rk-Gk-s1b"/>
                         <outlet property="tableViewGiven" destination="PCu-Pc-z9h" id="Z9d-wu-xbD"/>

@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class TourDetailViewController: UIViewController {
+class TourDetailViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
     
@@ -18,10 +18,19 @@ class TourDetailViewController: UIViewController {
     @IBOutlet var tourGuyNameLabel: UILabel!
     @IBOutlet var ratingLabel: UILabel!
     
+    let locationManager = CLLocationManager()
+    var mapHasCenteredOnce = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tourNameLabel.text = InternalHelper.sharedInstance.tourName
+
+        mapView.delegate = self
+        mapView.userTrackingMode = MKUserTrackingMode.Follow // map moves depending on location
+        centerMapOnLocation(InternalHelper.sharedInstance.coordinate)
+        
+        self.descriptionTextView.text = "Lorem ipsum"
+        
         // Do any additional setup after loading the view.
     }
 
@@ -33,5 +42,12 @@ class TourDetailViewController: UIViewController {
     @IBAction func backButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    func centerMapOnLocation(location: CLLocationCoordinate2D) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, 900, 900)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    
 
 }

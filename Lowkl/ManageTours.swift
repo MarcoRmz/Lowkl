@@ -11,6 +11,13 @@ import MGSwipeTableCell
 import Firebase
 
 class ManageTours: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    @IBAction func addTour(sender: AnyObject) {
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("NewLocation")
+        
+        self.presentViewController(homeViewController, animated: true, completion: nil)
+    }
     
     var guideDatabaseRef: FIRDatabaseReference!
     var toursDatabaseRef: FIRDatabaseReference!

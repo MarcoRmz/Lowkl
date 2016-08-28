@@ -12,5 +12,7 @@ class InternalHelper {
     var tourName: String = ""
     var tourDescription: String = ""
     
+    var coordinate = CLLocationCoordinate2D()
+    
     static let sharedInstance: InternalHelper = InternalHelper()
 }

@@ -25,7 +25,7 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.profileButton.layer.cornerRadius = self.profileButton.frame.size.width / 2.5
+        self.profileButton.layer.cornerRadius = self.profileButton.frame.size.width / 2
         self.profileButton.clipsToBounds = true
         
         mapView.delegate = self

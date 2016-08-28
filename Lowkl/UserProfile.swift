@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseStorage
+import Firebase
 import FBSDKCoreKit
 
 
@@ -20,6 +19,7 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet var tableViewTaken: UITableView!
     @IBOutlet var tableViewGiven: UITableView!
+    @IBOutlet weak var guideButton: UIButton!
     
     @IBAction func didTapLogoutButton(sender: AnyObject) {
         //Signs user out of FireBase
@@ -39,8 +39,30 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     var  taken = [String]()
     var  given = [String]()
     
+    var guide: Bool?
+    var userID: String!
+    
+    var userDatabaseRef: FIRDatabaseReference!
+    
+    @IBAction func didTapGuideButton(sender: AnyObject) {
+        //Check if user is guide or not
+        if (!self.guide!) {
+            self.userDatabaseRef.child(self.userID + "/guide").setValue(true)
+            guide = true
+        }
+        
+        //Send user to manage tours screen
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("TourView")
+        
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userDatabaseRef = FIRDatabase.database().reference().child("users")
         
         self.imageUser.layer.cornerRadius = self.imageUser.frame.size.width / 2
         self.imageUser.clipsToBounds = true
@@ -54,6 +76,7 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
             // User is signed in.
             let name = user.displayName
             let email = user.email
+            self.userID = user.uid
             
             self.nameUser.text = name
             self.emailUser.text = email
@@ -91,6 +114,21 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
                         }
                     }
                 })
+            }
+            //Change guide button text depending if user is guide ot not
+            userDatabaseRef.child(self.userID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                // Get guide value
+                self.guide = snapshot.value!["guide"] as! Bool
+                
+                if (self.guide!) {
+                    print("User is guide")
+                    self.guideButton.setTitle("Manage Tours", forState: UIControlState.Normal)
+                } else {
+                    print("User isn't a guide")
+                    self.guideButton.setTitle("Become a Guide", forState: UIControlState.Normal)
+                }
+            }) { (error) in
+                print(error.localizedDescription)
             }
         } else {
             // No user is signed in.

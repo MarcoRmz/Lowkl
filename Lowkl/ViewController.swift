@@ -28,7 +28,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // User is signed in. Move user to homescreen
                 let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 
-                let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("TourView")
+                let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 
                 self.presentViewController(homeViewController, animated: true, completion: nil)
                 

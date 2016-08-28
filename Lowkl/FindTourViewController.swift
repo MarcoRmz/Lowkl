@@ -9,11 +9,13 @@
 import UIKit
 import MapKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet var mapView: MKMapView!
     
+    @IBOutlet var addLocationButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
     
     let locationManager = CLLocationManager()
@@ -21,6 +23,9 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     var geofire: GeoFire!
     var geoFireRef: FIRDatabaseReference!
     var toursFireRef: FIRDatabaseReference!
+    var usersFireRef: FIRDatabaseReference!
+    
+    var guide: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +38,29 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         
         geoFireRef = FIRDatabase.database().reference().child("locations")
         toursFireRef = FIRDatabase.database().reference().child("tours")
+        usersFireRef = FIRDatabase.database().reference().child("users")
         geofire = GeoFire(firebaseRef: geoFireRef)
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            // User is signed in.
+            usersFireRef.child(user.uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                self.guide = snapshot.value!["guide"] as! Bool
+                //Change guide button text depending if user is guide ot not
+                if (self.guide!) {
+                    print("User is guide")
+                    self.addLocationButton.hidden = false
+                } else {
+                    print("User isn't a guide")
+                    self.addLocationButton.hidden = true
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        } else {
+            // No user is signed in.
+        }
+        
+        
     }
     
     func locationAuthStatus() {
@@ -161,12 +188,6 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     @IBAction func addRandomPlace(sender: AnyObject) {
         
-//        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-//        let rand = arc4random_uniform(4) + 1
-//        let randomNames = ["Paseo Tec", "Cintermex", "Tec", "Fundidora"]
-//        print(rand)
-//        createSighting(forLocation: loc, withId: Int(rand), titleName: randomNames[Int(rand)-1])
-        
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("NewLocation")
@@ -176,7 +197,28 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         
     }
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print("this shit works!")
+        print(view.annotation!.title!!)
+        
+        toursFireRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            print(snapshot.children.allObjects)
+            //Change guide button text
+            
+            for children in snapshot.children {
+                print(children["name"]?!)
+                print(children)
+                print(children["description"]?!)
+                if children["name"]?!.description == InternalHelper.sharedInstance.tourName {
+                    InternalHelper.sharedInstance.tourDescription = children["description"]!!.description
+                }
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        InternalHelper.sharedInstance.coordinate = (view.annotation?.coordinate)!
+        InternalHelper.sharedInstance.tourName = view.annotation!.title!!
+        
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("DetailView")

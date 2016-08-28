@@ -10,11 +10,6 @@ import Foundation
 import MapKit
 import FirebaseDatabase
 
-let randomNames = ["Paseo Tec", "Cintermex", "Tec", "Fundidora", "Test", "Test dos"]
-
-let dbRef = FIRDatabase.database().reference()
-
-
 class TourAnnotation: NSObject, MKAnnotation {
     var coordinate = CLLocationCoordinate2D()
     var tourNumber: Int
@@ -25,7 +20,6 @@ class TourAnnotation: NSObject, MKAnnotation {
     init(coordinate: CLLocationCoordinate2D, tourNumber: Int, locationArray: [String]) {
         self.coordinate = coordinate
         self.tourNumber = tourNumber
-        //self.tourName = locationArray
         self.tourName = locationArray[tourNumber]
         self.title = self.tourName
     }

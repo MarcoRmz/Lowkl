@@ -21,11 +21,15 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     var geofire: GeoFire!
     var geoFireRef: FIRDatabaseReference!
     var toursFireRef: FIRDatabaseReference!
+    
+    var mapHasCenteredOnce = false
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mapView.delegate = self
+        mapView.delegate = self
+        mapView.userTrackingMode = MKUserTrackingMode.Follow // map moves depending on location
+        
         toursFireRef = FIRDatabase.database().reference().child("tours")
         geoFireRef = FIRDatabase.database().reference().child("locations")
         geofire = GeoFire(firebaseRef: geoFireRef)
@@ -84,6 +88,15 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
                 self.toursFireRef.child("\(tourId)").child("description").setValue("\(description)")
             }
         })
+    }
+    
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        if let location = userLocation.location {
+            if !mapHasCenteredOnce {
+                centerMapOnLocation(location)
+                mapHasCenteredOnce = true
+            }
+        }
     }
 
 }

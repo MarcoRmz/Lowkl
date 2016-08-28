@@ -79,6 +79,17 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     func createSighting(forLocation location: CLLocation, withId locationId: String) {
         geofire.setLocation(location, forKey: locationId)
     }
+    
+    func showSightingsOnMap(location: CLLocation) {
+        let circleQuery = geofire.queryAtLocation(location, withRadius: 2.5)
+        _ = circleQuery?.observeEventType(.KeyEntered, withBlock: { (key, location) in
+            
+            if let key = key, let location = location {
+                let annotation = TourAnnotation(coordinate: location.coordinate, tourNumber: Int(key)!)
+            }
+            
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

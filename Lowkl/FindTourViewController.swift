@@ -118,10 +118,32 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         let circleQuery = geofire.queryAtLocation(location, withRadius: 2.5)
         _ = circleQuery?.observeEventType(.KeyEntered, withBlock: { (key, location) in
             
-            if let key = key, let location = location {
-                let annotation = TourAnnotation(coordinate: location.coordinate, tourNumber: Int(key)!)
-                self.mapView.addAnnotation(annotation)
+        var toursarray = [String]()
+            self.toursFireRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                // Get user value
+                print(snapshot)
+                print("ok")
+                
+                let tours = snapshot.children
+                print(tours)
+                
+                for child in snapshot.children {
+                    let whatever = child.value["name"] as! String
+                    toursarray.append(whatever)
+                }
+                print(toursarray)
+                if let key = key, let location = location {
+                    let annotation = TourAnnotation(coordinate: location.coordinate, tourNumber: Int(key)!, locationArray: toursarray)
+                    self.mapView.addAnnotation(annotation)
+                }
+                // ...
+            }) { (error) in
+                print("-----")
+                print(error.localizedDescription)
             }
+            
+            
+            
             
         })
     }

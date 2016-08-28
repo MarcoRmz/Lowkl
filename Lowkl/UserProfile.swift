@@ -49,6 +49,7 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         //Check if user is guide or not
         if (!self.guide!) {
             self.userDatabaseRef.child(self.userID + "/guide").setValue(true)
+            FIRDatabase.database().reference().child("guides").child(self.userID)
             guide = true
         }
         

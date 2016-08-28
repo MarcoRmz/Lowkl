@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseStorage
 import FBSDKCoreKit
 
+
 class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var imageUser: UIImageView!
@@ -103,6 +104,9 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         self.tableViewGiven.delegate = self
         self.tableViewGiven.dataSource = self
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

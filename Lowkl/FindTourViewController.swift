@@ -204,26 +204,27 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
             //Change guide button text
             
             for children in snapshot.children {
-                print(children["name"]?!)
+                print(children.value["name"]?!)
                 print(children)
-                print(children["description"]?!)
-                if children["name"]?!.description == InternalHelper.sharedInstance.tourName {
-                    InternalHelper.sharedInstance.tourDescription = children["description"]!!.description
+                print(children.value["description"]?!)
+                if children.value["name"]?!.description == InternalHelper.sharedInstance.tourName {
+                    InternalHelper.sharedInstance.tourDescription = (children.value["description"]!!.description)!
                 }
             }
+            InternalHelper.sharedInstance.coordinate = (view.annotation?.coordinate)!
+            InternalHelper.sharedInstance.tourName = view.annotation!.title!!
+            
+            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("DetailView")
+            
+            self.presentViewController(homeViewController, animated: true, completion: nil)
             
         }) { (error) in
             print(error.localizedDescription)
         }
         
-        InternalHelper.sharedInstance.coordinate = (view.annotation?.coordinate)!
-        InternalHelper.sharedInstance.tourName = view.annotation!.title!!
         
-        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("DetailView")
-        
-        self.presentViewController(homeViewController, animated: true, completion: nil)
         
     }
 

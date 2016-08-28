@@ -28,7 +28,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.userTrackingMode = MKUserTrackingMode.Follow // map moves depending on location
         centerMapOnLocation(InternalHelper.sharedInstance.coordinate)
         
-        self.descriptionTextView.text = InternalHelper.sharedInstance.tourDescription
+        self.descriptionTextView.text = "Lorem ipsum"
         
         
         // Do any additional setup after loading the view.

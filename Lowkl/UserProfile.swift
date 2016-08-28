@@ -12,8 +12,9 @@ import FBSDKCoreKit
 
 class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var imageUser: UIImageView!
-    @IBOutlet var nameUser: UILabel!
+    @IBOutlet weak var imageUser: UIImageView!
+    @IBOutlet weak var nameUser: UILabel!
+    @IBOutlet weak var emailUser: UILabel!
     
     @IBOutlet var tableViewTaken: UITableView!
     @IBOutlet var tableViewGiven: UITableView!
@@ -38,6 +39,24 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imageUser.layer.cornerRadius = self.imageUser.frame.size.width / 2
+        self.imageUser.clipsToBounds = true
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            // User is signed in.
+            let name = user.displayName
+            let email = user.email
+            let photoUrl = user.photoURL
+            
+            self.nameUser.text = name
+            self.emailUser.text = email
+            let data = NSData(contentsOfURL: photoUrl!)
+            self.imageUser.image = UIImage(data: data!)
+        } else {
+            // No user is signed in.
+        }
+        
         self.tableViewTaken.delegate = self
         self.tableViewTaken.dataSource = self
         

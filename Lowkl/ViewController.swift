@@ -15,6 +15,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     let loginButton = FBSDKLoginButton()
     
+    @IBOutlet weak var aivLoadingSpinner: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -52,10 +54,25 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User did log in to FB")
         
-        let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+        self.loginButton.hidden = true
         
-        FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-            print("User did log in to FireBase")
+        aivLoadingSpinner.startAnimating()
+        
+        if (error != nil) {
+            //Handle errors
+            print(error)
+            self.loginButton.hidden = false
+            aivLoadingSpinner.stopAnimating()
+        } else if (result.isCancelled) {
+            //Handle cancel event
+            self.loginButton.hidden = false
+            aivLoadingSpinner.stopAnimating()
+        } else {
+            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+            
+            FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                print("User did log in to FireBase")
+            }
         }
     }
     

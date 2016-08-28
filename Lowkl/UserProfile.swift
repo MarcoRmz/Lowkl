@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FBSDKCoreKit
 
 class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,6 +17,21 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet var tableViewTaken: UITableView!
     @IBOutlet var tableViewGiven: UITableView!
+    
+    @IBAction func didTapLogoutButton(sender: AnyObject) {
+        //Signs user out of FireBase
+        try! FIRAuth.auth()!.signOut()
+        
+        //Sign user out of Facebook
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+        
+        //Send user back to home screen
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LoginView")
+        
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
     
     var  taken = [String]()
     var  given = [String]()

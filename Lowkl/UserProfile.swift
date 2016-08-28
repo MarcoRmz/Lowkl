@@ -49,6 +49,7 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         //Check if user is guide or not
         if (!self.guide!) {
             self.userDatabaseRef.child(self.userID + "/guide").setValue(true)
+            FIRDatabase.database().reference().child("guides").child(self.userID + "/ownedTours").setValue([1])
             guide = true
         }
         
@@ -85,6 +86,9 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
             
             self.tableViewTaken.delegate = self
             self.tableViewTaken.dataSource = self
+            
+            self.tableViewGiven.delegate = self
+            self.tableViewGiven.dataSource = self
             
             // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
             profilePictureRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
@@ -146,9 +150,33 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
                         var intIndex = index as! NSNumber
                         self.toursDatabaseRef.child(intIndex.stringValue).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                             tourName = snapshot.value!["name"] as! String
-                            sleep(1)
+                            NSThread.sleepForTimeInterval(0.05)
                             self.taken.append(tourName)
                             self.tableViewTaken.reloadData()
+                        }) { (error) in
+                            print(error.localizedDescription)
+                        }
+                    }
+                } else {
+                    print("User hasn't taken tours")
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+            // Get Upcoming tours
+            self.userDatabaseRef.child(self.userID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                let upcomingToursIndex = snapshot.value!["upcomingTours"] as! NSArray
+                var tourName: String!
+                
+                if (upcomingToursIndex.count > 0) {
+                    for index in upcomingToursIndex {
+                        var intIndex = index as! NSNumber
+                        self.toursDatabaseRef.child(intIndex.stringValue).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                            tourName = snapshot.value!["name"] as! String
+                            NSThread.sleepForTimeInterval(0.05)
+                            self.given.append(tourName)
+                            self.tableViewGiven.reloadData()
                         }) { (error) in
                             print(error.localizedDescription)
                         }
@@ -162,11 +190,6 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         } else {
             // No user is signed in.
         }
-        
-        given = ["Monterrey","Cancun"]
-        
-        self.tableViewGiven.delegate = self
-        self.tableViewGiven.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {

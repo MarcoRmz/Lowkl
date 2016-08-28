@@ -10,16 +10,22 @@ import UIKit
 
 class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UIPickerViewDelegate, UIPickerViewDataSource{
     
-    @IBOutlet var placeChosen: UILabel!
+    @IBOutlet var tablePlaces: UITableView!
     @IBOutlet var pickerPlace: UIPickerView!
     
     let pickerData = ["Monterrey", "San Luis", "Cancun"]
-    let taken = ["Bahamas", "Kualalupur", "Fiji"]
+    let placesMonterrey = ["Cola de caballo", "Tec de Monterrey", "Fiji"]
+    let placesSanLuis = ["Damn", "Come", "On"]
+    let placesCancun = ["Palatzo", "Canc", "D"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerPlace.dataSource = self
         self.pickerPlace.delegate = self
+        
+        self.tablePlaces.dataSource = self
+        self.tablePlaces.delegate = self
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +46,7 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        placeChosen.text = pickerData[row]
+        tablePlaces.reloadData()
     }
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -50,10 +56,23 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("CellToursTaken", forIndexPath: indexPath)
-            let take = taken[indexPath.row]
-            cell.textLabel?.text = take
+        let cell = tableView.dequeueReusableCellWithIdentifier("CellTours", forIndexPath: indexPath)
+        if(placeChosen.text! == "Monterrey"){
+            let m = placesMonterrey[indexPath.row]
+            cell.textLabel?.text = m
             return cell
+        }else if(placeChosen.text! == "San Luis"){
+            let s = placesSanLuis[indexPath.row]
+            cell.textLabel?.text = s
+            return cell
+        }else if(placeChosen.text! == "Cancun"){
+            let c = placesCancun[indexPath.row]
+            cell.textLabel?.text = c
+            return cell
+        }
+        
+        return cell
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -61,7 +80,26 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return taken.count
+        if(placeChosen.text == "Monterrey"){
+            if(placesMonterrey.isEmpty){
+                return 0
+            }else{
+                return placesMonterrey.count
+            }
+        }else if(placeChosen.text == "San Luis"){
+            if(placesSanLuis.isEmpty){
+                return 0
+            }else{
+                return placesSanLuis.count
+            }
+            
+        }else{
+            if(placesCancun.isEmpty){
+                return 0
+            }else{
+                return placesCancun.count
+            }
+        }
     }
     
 }

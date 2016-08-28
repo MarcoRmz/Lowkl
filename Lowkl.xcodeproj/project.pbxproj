@@ -10,6 +10,8 @@
 		390B7C693F2FC94E5C680DAA /* Pods_Lowkl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54081175611C38B1B98075AA /* Pods_Lowkl.framework */; };
 		8A1A80DD1D72817F00290A23 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A80DC1D72817F00290A23 /* UserProfile.swift */; };
 		8A55B5B51D7243E600A112E3 /* GiveTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55B5B41D7243E600A112E3 /* GiveTour.swift */; };
+		8A5B10931D72BDCB003F6523 /* ManageTours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B10921D72BDCB003F6523 /* ManageTours.swift */; };
+		8A5B10951D72D2F0003F6523 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B10941D72D2F0003F6523 /* EditViewController.swift */; };
 		8A8480E71D7268C9007713FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A8480E61D7268C9007713FC /* GoogleService-Info.plist */; };
 		A9C350B51D722607006BAD03 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350B41D722607006BAD03 /* FBSDKCoreKit.framework */; };
 		A9C350B91D7227F4006BAD03 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350B81D7227F4006BAD03 /* Bolts.framework */; };
@@ -34,6 +36,8 @@
 		7E60BA70C879E1DCFC35043C /* Pods-Lowkl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lowkl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lowkl/Pods-Lowkl.debug.xcconfig"; sourceTree = "<group>"; };
 		8A1A80DC1D72817F00290A23 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		8A55B5B41D7243E600A112E3 /* GiveTour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveTour.swift; sourceTree = "<group>"; };
+		8A5B10921D72BDCB003F6523 /* ManageTours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageTours.swift; sourceTree = "<group>"; };
+		8A5B10941D72D2F0003F6523 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		8A8480E61D7268C9007713FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A9C350B41D722607006BAD03 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A9C350B81D7227F4006BAD03 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				8A55B5B41D7243E600A112E3 /* GiveTour.swift */,
 				F4DB03351D7222EC006D664B /* Lowlk-Bridging-Header.h */,
 				8A1A80DC1D72817F00290A23 /* UserProfile.swift */,
+				8A5B10921D72BDCB003F6523 /* ManageTours.swift */,
+				8A5B10941D72D2F0003F6523 /* EditViewController.swift */,
 			);
 			path = Lowkl;
 			sourceTree = "<group>";
@@ -217,7 +223,7 @@
 				TargetAttributes = {
 					F4DB03061D7216BF006D664B = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4265Q257TP;
+						DevelopmentTeam = 642XEDEKJP;
 					};
 				};
 			};
@@ -357,12 +363,14 @@
 				F4DB03321D7221F6006D664B /* GFGeoHash.m in Sources */,
 				F4DB030B1D7216BF006D664B /* AppDelegate.swift in Sources */,
 				8A55B5B51D7243E600A112E3 /* GiveTour.swift in Sources */,
+				8A5B10951D72D2F0003F6523 /* EditViewController.swift in Sources */,
 				F4DB03301D7221F6006D664B /* GeoFire.m in Sources */,
 				8A1A80DD1D72817F00290A23 /* UserProfile.swift in Sources */,
 				F4AB53CC1D7265CA00DA9BA2 /* TourAnnotation.swift in Sources */,
 				F4E6BDA91D72A5B20098C986 /* TourDetailViewController.swift in Sources */,
 				F4DB03331D7221F6006D664B /* GFGeoHashQuery.m in Sources */,
 				F4DB03341D7221F6006D664B /* GFQuery.m in Sources */,
+				8A5B10931D72BDCB003F6523 /* ManageTours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

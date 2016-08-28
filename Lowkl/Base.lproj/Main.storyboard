@@ -428,7 +428,7 @@
         <!--Add Location View Controller-->
         <scene sceneID="Eg5-Rx-Mqe">
             <objects>
-                <viewController id="5gG-9H-wRm" customClass="AddLocationViewController" customModule="Lowkl" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewLocation" id="5gG-9H-wRm" customClass="AddLocationViewController" customModule="Lowkl" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OcK-Iw-baW"/>
                         <viewControllerLayoutGuide type="bottom" id="11g-qM-4sa"/>

@@ -12,6 +12,7 @@ import GoogleMaps
 import GoogleMapsCore
 import FBSDKLoginKit
 import MGSwipeTableCell
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         GMSServices.provideAPIKey("AIzaSyChjS3qUrjTZLwxMv9980GBsdt96NksiDQ")
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        IQKeyboardManager.sharedManager().enable = true
         
         return true
     }

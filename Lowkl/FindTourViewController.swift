@@ -188,12 +188,6 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     @IBAction func addRandomPlace(sender: AnyObject) {
         
-//        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-//        let rand = arc4random_uniform(4) + 1
-//        let randomNames = ["Paseo Tec", "Cintermex", "Tec", "Fundidora"]
-//        print(rand)
-//        createSighting(forLocation: loc, withId: Int(rand), titleName: randomNames[Int(rand)-1])
-        
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("NewLocation")
@@ -204,6 +198,23 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     }
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print(view.annotation!.title!!)
+        
+        toursFireRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            print(snapshot.children.allObjects)
+            //Change guide button text
+            
+            for children in snapshot.children {
+                print(children["name"]?!)
+                if children["name"]?!.description == InternalHelper.sharedInstance.tourName {
+                    InternalHelper.sharedInstance.tourDescription = children["description"]!!.description
+                }
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        InternalHelper.sharedInstance.coordinate = (view.annotation?.coordinate)!
         InternalHelper.sharedInstance.tourName = view.annotation!.title!!
         
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

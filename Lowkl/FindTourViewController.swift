@@ -14,6 +14,8 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
 
     @IBOutlet var mapView: MKMapView!
     
+    @IBOutlet weak var profileButton: UIButton!
+    
     let locationManager = CLLocationManager()
     var mapHasCenteredOnce = false
     var geofire: GeoFire!
@@ -21,6 +23,9 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.profileButton.layer.cornerRadius = self.profileButton.frame.size.width / 2.5
+        self.profileButton.clipsToBounds = true
         
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.Follow // map moves depending on location

@@ -26,9 +26,10 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
+        toursFireRef = FIRDatabase.database().reference().child("tours")
         geoFireRef = FIRDatabase.database().reference().child("locations")
         geofire = GeoFire(firebaseRef: geoFireRef)
-         toursFireRef = FIRDatabase.database().reference().child("tours")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,8 +43,27 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func addLocationButtonPressed(sender: UIButton) {
         let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        let rand = arc4random_uniform(4) + 1
-        createSighting(forLocation: loc, withId: Int(rand), titleName: self.nameTextField.text!, description: self.descriptionTextField.text!)
+        var count: Int = 0
+        self.toursFireRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            // Get user value
+            print(snapshot)
+            print("ok")
+            
+            let tours = snapshot.children
+            print(tours)
+            
+            for child in snapshot.children {
+                count = count + 1
+            }
+            print(count)
+            // ...
+            self.createSighting(forLocation: loc, withId: count, titleName: self.nameTextField.text!, description: self.descriptionTextField.text!)
+        }) { (error) in
+            print("-----")
+            print(error.localizedDescription)
+        }
+
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -54,11 +74,12 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     
     func createSighting(forLocation location: CLLocation, withId tourId: Int, titleName: String, description: String) {
         //geofire.setLocation(location, forKey: "\(tourId)")
-        
+        print("create sighting")
         geofire.setLocation(location, forKey: "\(tourId)", withCompletionBlock:  { (error) in
             if error != nil {
                 print("error")
             } else {
+                print("Se guarda esto")
                 self.toursFireRef.child("\(tourId)").child("name").setValue("\(titleName)")
                 self.toursFireRef.child("\(tourId)").child("description").setValue("\(description)")
             }

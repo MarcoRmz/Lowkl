@@ -10,7 +10,7 @@
 		390B7C693F2FC94E5C680DAA /* Pods_Lowkl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54081175611C38B1B98075AA /* Pods_Lowkl.framework */; };
 		8A1A80DD1D72817F00290A23 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A80DC1D72817F00290A23 /* UserProfile.swift */; };
 		8A55B5B51D7243E600A112E3 /* GiveTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55B5B41D7243E600A112E3 /* GiveTour.swift */; };
-		8A8480E71D7268C9007713FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A8480E61D7268C9007713FC /* GoogleService-Info.plist */; };
+		A97A9EE91D72E116009145BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A97A9EE81D72E116009145BA /* GoogleService-Info.plist */; };
 		A9C350B51D722607006BAD03 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350B41D722607006BAD03 /* FBSDKCoreKit.framework */; };
 		A9C350B91D7227F4006BAD03 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350B81D7227F4006BAD03 /* Bolts.framework */; };
 		A9C350BB1D72396F006BAD03 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350BA1D72396F006BAD03 /* FBSDKLoginKit.framework */; };
@@ -34,7 +34,7 @@
 		7E60BA70C879E1DCFC35043C /* Pods-Lowkl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lowkl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lowkl/Pods-Lowkl.debug.xcconfig"; sourceTree = "<group>"; };
 		8A1A80DC1D72817F00290A23 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		8A55B5B41D7243E600A112E3 /* GiveTour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveTour.swift; sourceTree = "<group>"; };
-		8A8480E61D7268C9007713FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A97A9EE81D72E116009145BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A9C350B41D722607006BAD03 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A9C350B81D7227F4006BAD03 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		A9C350BA1D72396F006BAD03 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -123,6 +123,7 @@
 		F4DB03091D7216BF006D664B /* Lowkl */ = {
 			isa = PBXGroup;
 			children = (
+				A97A9EE81D72E116009145BA /* GoogleService-Info.plist */,
 				F4DB031E1D7221F6006D664B /* GeoFire */,
 				F4DB030A1D7216BF006D664B /* AppDelegate.swift */,
 				F4DB030C1D7216BF006D664B /* ViewController.swift */,
@@ -143,7 +144,6 @@
 		F4DB031E1D7221F6006D664B /* GeoFire */ = {
 			isa = PBXGroup;
 			children = (
-				8A8480E61D7268C9007713FC /* GoogleService-Info.plist */,
 				F4DB031F1D7221F6006D664B /* API */,
 				F4DB03241D7221F6006D664B /* GeoFire-Prefix.pch */,
 				F4DB03251D7221F6006D664B /* Implementation */,
@@ -186,7 +186,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4DB03191D7216BF006D664B /* Build configuration list for PBXNativeTarget "Lowkl" */;
 			buildPhases = (
-				187448F5466D9E6A6D4910FF /* 📦 Check Pods Manifest.lock */,
+				187448F5466D9E6A6D4910FF /* [CP] Check Pods Manifest.lock */,
 				5AA57B6942D30B07929C8F86 /* [CP] Check Pods Manifest.lock */,
 				F4DB03031D7216BF006D664B /* Sources */,
 				F4DB03041D7216BF006D664B /* Frameworks */,
@@ -245,7 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4DB03151D7216BF006D664B /* LaunchScreen.storyboard in Resources */,
-				8A8480E71D7268C9007713FC /* GoogleService-Info.plist in Resources */,
+				A97A9EE91D72E116009145BA /* GoogleService-Info.plist in Resources */,
 				F4DB03121D7216BF006D664B /* Assets.xcassets in Resources */,
 				F4DB03101D7216BF006D664B /* Main.storyboard in Resources */,
 			);
@@ -254,14 +254,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		187448F5466D9E6A6D4910FF /* 📦 Check Pods Manifest.lock */ = {
+		187448F5466D9E6A6D4910FF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,13 +36,14 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         self.presentViewController(viewController, animated: true, completion: nil)
     }
     
-    var  taken = [String]()
-    var  given = [String]()
+    var taken = [String]()
+    var given = [String]()
     
     var guide: Bool?
     var userID: String!
     
     var userDatabaseRef: FIRDatabaseReference!
+    var toursDatabaseRef: FIRDatabaseReference!
     
     @IBAction func didTapGuideButton(sender: AnyObject) {
         //Check if user is guide or not
@@ -63,6 +64,7 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         super.viewDidLoad()
         
         userDatabaseRef = FIRDatabase.database().reference().child("users")
+        toursDatabaseRef = FIRDatabase.database().reference().child("tours")
         
         self.imageUser.layer.cornerRadius = self.imageUser.frame.size.width / 2
         self.imageUser.clipsToBounds = true
@@ -81,9 +83,12 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
             self.nameUser.text = name
             self.emailUser.text = email
             
+            self.tableViewTaken.delegate = self
+            self.tableViewTaken.dataSource = self
+            
             // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
             profilePictureRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
-                if (error == nil) {
+                if (error != nil) {
                     print("Unable to download image")
                 } else {
                     if (data != nil) {
@@ -115,11 +120,11 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
                     }
                 })
             }
-            //Change guide button text depending if user is guide ot not
+            
+            // Get guide value
             userDatabaseRef.child(self.userID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                // Get guide value
                 self.guide = snapshot.value!["guide"] as! Bool
-                
+                //Change guide button text depending if user is guide ot not
                 if (self.guide!) {
                     print("User is guide")
                     self.guideButton.setTitle("Manage Tours", forState: UIControlState.Normal)
@@ -130,21 +135,33 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
             }) { (error) in
                 print(error.localizedDescription)
             }
+            
+            // Get Taken tours
+            self.userDatabaseRef.child(self.userID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                let takenToursIndex = snapshot.value!["takenTours"] as! NSArray
+                var tourName: String!
+                
+                if (takenToursIndex.count > 0) {
+                    for index in takenToursIndex {
+                        var intIndex = index as! NSNumber
+                        self.toursDatabaseRef.child(intIndex.stringValue).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                            tourName = snapshot.value!["name"] as! String
+                            sleep(1)
+                            self.taken.append(tourName)
+                            self.tableViewTaken.reloadData()
+                        }) { (error) in
+                            print(error.localizedDescription)
+                        }
+                    }
+                } else {
+                    print("User hasn't taken tours")
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
         } else {
             // No user is signed in.
         }
-        
-        self.tableViewTaken.delegate = self
-        self.tableViewTaken.dataSource = self
-        
-        taken = ["Bahamas", "Kualalupur", "Fiji"]
-        given = ["Monterrey","Cancun"]
-        
-        self.tableViewGiven.delegate = self
-        self.tableViewGiven.dataSource = self
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -153,19 +170,10 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
-        if(tableView.isEqual(tableViewTaken)){
-            let cell = tableView.dequeueReusableCellWithIdentifier("CellToursTaken", forIndexPath: indexPath)
-            let take = taken[indexPath.row]
-            cell.textLabel?.text = take
-            return cell
-        }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("CellToursGiven", forIndexPath: indexPath)
-            let give = given[indexPath.row]
-            cell.textLabel?.text = give
-            return cell
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("CellToursTaken", forIndexPath: indexPath)
+        let take = taken[indexPath.row]
+        cell.textLabel?.text = take
+        return cell
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -173,14 +181,6 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(tableView.isEqual(tableViewTaken)){
-            return taken.count
-        }else{
-            return given.count
-        }
-        
+        return taken.count
     }
-    
-    
-    
 }

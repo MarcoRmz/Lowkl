@@ -352,8 +352,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOq-12-ALQ">
-                                <rect key="frame" x="124" y="214" width="97" height="30"/>
-                                <state key="normal" title="Manage Tours"/>
+                                <rect key="frame" x="210" y="161" width="97" height="30"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

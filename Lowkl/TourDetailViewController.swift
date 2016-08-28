@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class TourDetailViewController: UIViewController {
 
@@ -20,7 +21,7 @@ class TourDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tourNameLabel.text = InternalHelper.sharedInstance.tourName
         // Do any additional setup after loading the view.
     }
 

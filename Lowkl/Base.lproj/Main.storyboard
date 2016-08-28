@@ -504,6 +504,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="addLocationButton" destination="SG5-KB-qfA" id="4jg-wf-44c"/>
                         <outlet property="mapView" destination="fbt-im-qMi" id="rVr-Jb-7Nq"/>
                         <outlet property="profileButton" destination="zo0-Ch-mZG" id="nAV-3t-gGD"/>
                     </connections>

@@ -195,7 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4DB03191D7216BF006D664B /* Build configuration list for PBXNativeTarget "Lowkl" */;
 			buildPhases = (
-				187448F5466D9E6A6D4910FF /* 📦 Check Pods Manifest.lock */,
+				187448F5466D9E6A6D4910FF /* [CP] Check Pods Manifest.lock */,
 				5AA57B6942D30B07929C8F86 /* [CP] Check Pods Manifest.lock */,
 				F4DB03031D7216BF006D664B /* Sources */,
 				F4DB03041D7216BF006D664B /* Frameworks */,
@@ -263,14 +263,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		187448F5466D9E6A6D4910FF /* 📦 Check Pods Manifest.lock */ = {
+		187448F5466D9E6A6D4910FF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

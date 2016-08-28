@@ -109,6 +109,15 @@ class ManageTours: UIViewController, UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    @IBAction func addTourButton(sender: AnyObject) {
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("NewLocation")
+        
+        self.presentViewController(homeViewController, animated: true, completion: nil)
+        
+    }
+    
     
     
 }

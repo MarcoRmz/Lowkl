@@ -24,12 +24,12 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tourNameLabel.text = InternalHelper.sharedInstance.tourName
+
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.Follow // map moves depending on location
         centerMapOnLocation(InternalHelper.sharedInstance.coordinate)
         
         self.descriptionTextView.text = "Lorem ipsum"
-        
         
         // Do any additional setup after loading the view.
     }

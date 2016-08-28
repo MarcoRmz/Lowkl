@@ -198,6 +198,9 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     }
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print(view.annotation!.title!!)
+        InternalHelper.sharedInstance.tourName = view.annotation!.title!!
+        
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         toursFireRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             print(snapshot.children.allObjects)
@@ -223,9 +226,6 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-        
-        
     }
 
 }

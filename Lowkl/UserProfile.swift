@@ -55,7 +55,7 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         //Send user to manage tours screen
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let viewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("TourView")
+        let viewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("ManageToursStory")
         
         self.presentViewController(viewController, animated: true, completion: nil)
     }

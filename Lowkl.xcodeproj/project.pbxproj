@@ -11,6 +11,7 @@
 		8A1A80DD1D72817F00290A23 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1A80DC1D72817F00290A23 /* UserProfile.swift */; };
 		8A55B5B51D7243E600A112E3 /* GiveTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55B5B41D7243E600A112E3 /* GiveTour.swift */; };
 		A9066FC21D7321A000B9FC94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9066FC11D7321A000B9FC94 /* GoogleService-Info.plist */; };
+		A9066FC41D7329E800B9FC94 /* ManageTours.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9066FC31D7329E800B9FC94 /* ManageTours.swift */; };
 		A9C350B51D722607006BAD03 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350B41D722607006BAD03 /* FBSDKCoreKit.framework */; };
 		A9C350B91D7227F4006BAD03 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350B81D7227F4006BAD03 /* Bolts.framework */; };
 		A9C350BB1D72396F006BAD03 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C350BA1D72396F006BAD03 /* FBSDKLoginKit.framework */; };
@@ -37,6 +38,7 @@
 		8A1A80DC1D72817F00290A23 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		8A55B5B41D7243E600A112E3 /* GiveTour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveTour.swift; sourceTree = "<group>"; };
 		A9066FC11D7321A000B9FC94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A9066FC31D7329E800B9FC94 /* ManageTours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageTours.swift; sourceTree = "<group>"; };
 		A9C350B41D722607006BAD03 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		A9C350B81D7227F4006BAD03 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		A9C350BA1D72396F006BAD03 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		F4DB03091D7216BF006D664B /* Lowkl */ = {
 			isa = PBXGroup;
 			children = (
+				A9066FC31D7329E800B9FC94 /* ManageTours.swift */,
 				A9066FC11D7321A000B9FC94 /* GoogleService-Info.plist */,
 				F4DB031E1D7221F6006D664B /* GeoFire */,
 				F4DB030A1D7216BF006D664B /* AppDelegate.swift */,
@@ -364,6 +367,7 @@
 				F4DB03321D7221F6006D664B /* GFGeoHash.m in Sources */,
 				F495E1EE1D72D0E000DBE5C4 /* APICalls.swift in Sources */,
 				F4DB030B1D7216BF006D664B /* AppDelegate.swift in Sources */,
+				A9066FC41D7329E800B9FC94 /* ManageTours.swift in Sources */,
 				8A55B5B51D7243E600A112E3 /* GiveTour.swift in Sources */,
 				F4DB03301D7221F6006D664B /* GeoFire.m in Sources */,
 				8A1A80DD1D72817F00290A23 /* UserProfile.swift in Sources */,

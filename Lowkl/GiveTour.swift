@@ -12,11 +12,25 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
     
     @IBOutlet var tablePlaces: UITableView!
     @IBOutlet var pickerPlace: UIPickerView!
+    @IBOutlet var labelChoose: UILabel!
+    @IBOutlet var labelChosen: UILabel!
     
+    @IBOutlet var chooseLabel: UILabel!
+    @IBOutlet var finishButton: UIButton!
+    @IBOutlet var ChooseButton: UIButton!
+    @IBOutlet var labelGoingTo: UILabel!
+    
+    
+    @IBOutlet var chosenFinal: UILabel!
+    @IBOutlet var chosenCompany: UILabel!
+    
+    var arrayLocations = [String]()
+    
+    var placeChosen = "Monterrey"
     let pickerData = ["Monterrey", "San Luis", "Cancun"]
-    let placesMonterrey = ["Cola de caballo", "Tec de Monterrey", "Fiji"]
-    let placesSanLuis = ["Damn", "Come", "On"]
-    let placesCancun = ["Palatzo", "Canc", "D"]
+    var placesMonterrey = ["Cola de caballo", "Tec de Monterrey", "Fiji"]
+    var placesSanLuis = ["Damn", "Come", "On"]
+    var placesCancun = ["Palatzo", "Canc", "D"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +39,14 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
         
         self.tablePlaces.dataSource = self
         self.tablePlaces.delegate = self
+        
+        self.tablePlaces.hidden = true
+        self.chooseLabel.hidden = true
+        self.finishButton.hidden = true
+        self.labelChosen.hidden = true
+        self.chosenCompany.hidden = true
+        self.chosenFinal.hidden = true
+        self.labelGoingTo.hidden = true
         
     }
     
@@ -42,10 +64,13 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    
         return pickerData[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        placeChosen = pickerData[row]
+        print(placeChosen)
         tablePlaces.reloadData()
     }
     
@@ -57,22 +82,43 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellTours", forIndexPath: indexPath)
-        if(placeChosen.text! == "Monterrey"){
+        if(placeChosen == "Monterrey"){
             let m = placesMonterrey[indexPath.row]
             cell.textLabel?.text = m
             return cell
-        }else if(placeChosen.text! == "San Luis"){
+        }else if(placeChosen == "San Luis"){
             let s = placesSanLuis[indexPath.row]
             cell.textLabel?.text = s
             return cell
-        }else if(placeChosen.text! == "Cancun"){
+        }else if(placeChosen == "Cancun"){
             let c = placesCancun[indexPath.row]
             cell.textLabel?.text = c
             return cell
+        }else{
+            let place = "text"
+            cell.textLabel?.text = place
+            return cell
         }
         
-        return cell
-        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if(placeChosen == "Monterrey"){
+            arrayLocations.append(placesMonterrey[indexPath.row])
+            labelChosen.text = functionUpdateLabel().componentsJoinedByString(",")
+            placesMonterrey.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }else if(placeChosen == "San Luis"){
+            arrayLocations.append(placesSanLuis[indexPath.row])
+            labelChosen.text = functionUpdateLabel().componentsJoinedByString(",")
+            placesSanLuis.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }else if(placeChosen == "Cancun"){
+            arrayLocations.append(placesCancun[indexPath.row])
+            labelChosen.text = functionUpdateLabel().componentsJoinedByString(",")
+            placesCancun.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -80,13 +126,13 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(placeChosen.text == "Monterrey"){
+        if(placeChosen == "Monterrey"){
             if(placesMonterrey.isEmpty){
                 return 0
             }else{
                 return placesMonterrey.count
             }
-        }else if(placeChosen.text == "San Luis"){
+        }else if(placeChosen == "San Luis"){
             if(placesSanLuis.isEmpty){
                 return 0
             }else{
@@ -101,6 +147,30 @@ class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UI
             }
         }
     }
+    @IBAction func finishedSelection(sender: AnyObject) {
+    }
     
+    func functionUpdateLabel()->NSArray{
+        let myArray = arrayLocations
+        
+        return myArray
+    }
+    
+    
+    @IBAction func cityChosen(sender: AnyObject) {
+        self.labelChoose.hidden = true
+        self.pickerPlace.hidden = true
+        self.ChooseButton.hidden = true
+        self.chosenCompany.hidden = false
+        self.chosenFinal.hidden = false
+        self.chooseLabel.hidden = false
+        self.tablePlaces.hidden = false
+        self.finishButton.hidden = false
+        self.labelChosen.hidden = false
+        self.labelGoingTo.hidden = false
+        
+        chosenFinal.text = placeChosen
+        
+    }
 }
 

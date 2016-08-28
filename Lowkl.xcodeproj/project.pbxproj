@@ -433,7 +433,7 @@
 				);
 				INFOPLIST_FILE = Lowkl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lowkl.Lowkl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorge.lowkl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lowkl/Lowlk-Bridging-Header.h";
@@ -456,7 +456,7 @@
 				);
 				INFOPLIST_FILE = Lowkl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lowkl.Lowkl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorge.lowkl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lowkl/Lowlk-Bridging-Header.h";

@@ -75,8 +75,9 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         var annotationView: MKAnnotationView?
         
         if annotation.isKindOfClass(MKUserLocation.self) {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
-            //annotationView?.image = UIImage(named: "")
+//            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
+//            annotationView?.image = UIImage(named: "addImg")
+            
         } else if let deqAnno = mapView.dequeueReusableAnnotationViewWithIdentifier(annoIdentifier) {
             annotationView = deqAnno
             
@@ -138,11 +139,18 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     @IBAction func addRandomPlace(sender: AnyObject) {
         
-        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        let rand = arc4random_uniform(4) + 1
-        let randomNames = ["Paseo Tec", "Cintermex", "Tec", "Fundidora"]
-        print(rand)
-        createSighting(forLocation: loc, withId: Int(rand), titleName: randomNames[Int(rand)-1])
+//        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+//        let rand = arc4random_uniform(4) + 1
+//        let randomNames = ["Paseo Tec", "Cintermex", "Tec", "Fundidora"]
+//        print(rand)
+//        createSighting(forLocation: loc, withId: Int(rand), titleName: randomNames[Int(rand)-1])
+        
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("NewLocation")
+        
+        self.presentViewController(homeViewController, animated: true, completion: nil)
+        
         
     }
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

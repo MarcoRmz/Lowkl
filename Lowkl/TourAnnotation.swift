@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-var tours = ["Tec Tour, Cola de Caballo Tour, History Tour"]
+let randomNames = ["Paseo Tec", "Cintermex", "Tec", "Fundidora"]
 
 class TourAnnotation: NSObject, MKAnnotation {
     var coordinate = CLLocationCoordinate2D()
@@ -20,7 +20,7 @@ class TourAnnotation: NSObject, MKAnnotation {
     init(coordinate: CLLocationCoordinate2D, tourNumber: Int) {
         self.coordinate = coordinate
         self.tourNumber = tourNumber
-        self.tourName = tours[tourNumber - 1]
+        self.tourName = randomNames[tourNumber - 1]
         self.title = self.tourName
     }
 }

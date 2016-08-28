@@ -15,6 +15,6 @@ target 'Lowkl' do
   pod 'PermissionScope'
   pod 'SVProgressHUD'
   pod 'GoogleMaps'
-
+  pod 'M13Checkbox', '~> 2.1'
 
 end

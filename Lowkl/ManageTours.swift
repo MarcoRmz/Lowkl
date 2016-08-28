@@ -8,9 +8,14 @@
 
 import UIKit
 import MGSwipeTableCell
+import Firebase
 
 class ManageTours: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    var guideDatabaseRef: FIRDatabaseReference!
+    var toursDatabaseRef: FIRDatabaseReference!
+    
+    var owned = [String]()
     var data = ["One", "Two", "Three"]
     
     @IBOutlet var manageTable: UITableView!
@@ -21,6 +26,33 @@ class ManageTours: UIViewController, UITableViewDelegate, UITableViewDataSource{
         self.manageTable.delegate = self
         self.manageTable.dataSource = self
         
+        if let user = FIRAuth.auth()?.currentUser {
+            guideDatabaseRef = FIRDatabase.database().reference().child("guides")
+            toursDatabaseRef = FIRDatabase.database().reference().child("tours")
+            
+            guideDatabaseRef.child(user.uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                let ownedToursIndex = snapshot.value!["ownedTours"] as! NSArray
+                var tourName: String!
+                
+                if (ownedToursIndex.count > 0) {
+                    for index in ownedToursIndex {
+                        var intIndex = index as! NSNumber
+                        self.toursDatabaseRef.child(intIndex.stringValue).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                            tourName = snapshot.value!["name"] as! String
+                            NSThread.sleepForTimeInterval(0.05)
+                            self.owned.append(tourName)
+                            self.manageTable.reloadData()
+                        }) { (error) in
+                            print(error.localizedDescription)
+                        }
+                    }
+                } else {
+                    print("User hasn't taken tours")
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -28,10 +60,10 @@ class ManageTours: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(data.isEmpty){
+        if(owned.isEmpty){
             return 0
         }else{
-            return data.count
+            return owned.count
         }
     }
     
@@ -48,13 +80,13 @@ class ManageTours: UIViewController, UITableViewDelegate, UITableViewDataSource{
             cell = MGSwipeTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
         }
         
-        cell.textLabel!.text = data[indexPath.row]
+        cell.textLabel!.text = owned[indexPath.row]
         
         //configure right buttons
         cell.rightButtons =
             [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor(), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
-                self.self.data.removeAtIndex(indexPath.row)
+                self.self.owned.removeAtIndex(indexPath.row)
                 self.manageTable.reloadData()
             return true
             })

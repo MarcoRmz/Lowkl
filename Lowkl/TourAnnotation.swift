@@ -8,8 +8,7 @@
 
 import Foundation
 import MapKit
-
-let randomNames = ["Paseo Tec", "Cintermex", "Tec", "Fundidora"]
+import FirebaseDatabase
 
 class TourAnnotation: NSObject, MKAnnotation {
     var coordinate = CLLocationCoordinate2D()
@@ -17,10 +16,11 @@ class TourAnnotation: NSObject, MKAnnotation {
     var tourName: String
     var title: String?
     
-    init(coordinate: CLLocationCoordinate2D, tourNumber: Int) {
+    
+    init(coordinate: CLLocationCoordinate2D, tourNumber: Int, locationArray: [String]) {
         self.coordinate = coordinate
         self.tourNumber = tourNumber
-        self.tourName = randomNames[tourNumber - 1]
+        self.tourName = locationArray[tourNumber]
         self.title = self.tourName
     }
 }

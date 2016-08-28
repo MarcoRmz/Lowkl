@@ -14,6 +14,7 @@ import FBSDKLoginKit
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     let loginButton = FBSDKLoginButton()
+    var userDatabaseRef: FIRDatabaseReference!
     
     @IBOutlet weak var aivLoadingSpinner: UIActivityIndicatorView!
     
@@ -70,8 +71,15 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else {
             let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
             
+            userDatabaseRef = FIRDatabase.database().reference().child("users")
+            
             FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
                 print("User did log in to FireBase")
+                
+                self.userDatabaseRef.child(user!.uid + "/guide").setValue(false)
+                self.userDatabaseRef.child(user!.uid + "/takenTours").setValue([1,2])
+                self.userDatabaseRef.child(user!.uid + "/upcomingTours").setValue([2,3])
+                self.userDatabaseRef.child(user!.uid + "/rating").setValue(5)
             }
         }
     }

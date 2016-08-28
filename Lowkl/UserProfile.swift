@@ -48,7 +48,7 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         if let user = FIRAuth.auth()?.currentUser {
             // Reference to Firebase storage
             let storage = FIRStorage.storage()
-            let storageRef = storage.referenceForURL("gs://lowkl-1314c.appspot.com")
+            let storageRef = storage.referenceForURL("gs://lowkl-1472333588771.appspot.com")
             let profilePictureRef = storageRef.child(user.uid+"/profilePicture.jpg")
             
             // User is signed in.

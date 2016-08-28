@@ -173,9 +173,9 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
                     for index in upcomingToursIndex {
                         var intIndex = index as! NSNumber
                         self.toursDatabaseRef.child(intIndex.stringValue).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                            tourName = snapshot.value!["name"] as! String
+                           //tourName = snapshot.value!["name"] as! String
                             NSThread.sleepForTimeInterval(0.05)
-                            self.given.append(tourName)
+                            //self.given.append(tourName)
                             self.tableViewGiven.reloadData()
                         }) { (error) in
                             print(error.localizedDescription)

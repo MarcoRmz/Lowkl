@@ -80,13 +80,9 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         //geofire.setLocation(location, forKey: "\(tourId)")
         print("create sighting")
         geofire.setLocation(location, forKey: "\(tourId)", withCompletionBlock:  { (error) in
-            if error != nil {
-                print("error")
-            } else {
-                print("Se guarda esto")
+            
                 self.toursFireRef.child("\(tourId)").child("name").setValue("\(titleName)")
                 self.toursFireRef.child("\(tourId)").child("description").setValue("\(description)")
-            }
         })
     }
     

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -65,6 +66,128 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYB-cM-jh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="746.5" y="759.5"/>
+        </scene>
+        <!--Tour Detail View Controller-->
+        <scene sceneID="pvz-Wh-2bu">
+            <objects>
+                <viewController storyboardIdentifier="DetailView" id="8G4-t2-0RD" customClass="TourDetailViewController" customModule="Lowkl" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fyU-lL-jP4"/>
+                        <viewControllerLayoutGuide type="bottom" id="akH-Cl-9uk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wmY-qq-REq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6pU-Uf-Tdk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="205"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="205" id="0Jh-Kh-rKe"/>
+                                    <constraint firstAttribute="height" constant="205" id="J1V-Ox-MFn"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0Jh-Kh-rKe"/>
+                                    </mask>
+                                </variation>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tour Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akK-8Q-AfQ">
+                                <rect key="frame" x="20" y="224" width="560" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="qBD-4x-YiB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BF7-Ii-I1f">
+                                <rect key="frame" x="20" y="276" width="560" height="138"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="138" id="Zfy-bX-NeI"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tour Guy Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQF-RL-vRI">
+                                <rect key="frame" x="20" y="433" width="234" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Xi8-q4-0Cp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdV-aI-oSg">
+                                <rect key="frame" x="20" y="457" width="59" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="XhX-LZ-WdD"/>
+                                    <constraint firstAttribute="height" constant="21" id="reb-yo-05f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6A-Qo-NMC">
+                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="YNU-tt-akJ"/>
+                                    <constraint firstAttribute="height" constant="40" id="wpg-WI-n3o"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="8G4-t2-0RD" eventType="touchUpInside" id="x7O-FE-oUZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0M-4E-xMt">
+                                <rect key="frame" x="81" y="457" width="173" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Nv6-Ju-bXL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocU-bR-EFn">
+                                <rect key="frame" x="393" y="441" width="95" height="30"/>
+                                <state key="normal" title="Book Now"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6pU-Uf-Tdk" firstAttribute="top" secondItem="wmY-qq-REq" secondAttribute="top" id="4ya-CJ-TmO"/>
+                            <constraint firstItem="6pU-Uf-Tdk" firstAttribute="leading" secondItem="wmY-qq-REq" secondAttribute="leading" id="Bde-jB-hs5"/>
+                            <constraint firstItem="T6A-Qo-NMC" firstAttribute="leading" secondItem="wmY-qq-REq" secondAttribute="leadingMargin" id="BuL-kr-BiR"/>
+                            <constraint firstItem="sdV-aI-oSg" firstAttribute="leading" secondItem="wmY-qq-REq" secondAttribute="leadingMargin" id="EZ7-n0-s6f"/>
+                            <constraint firstItem="T6A-Qo-NMC" firstAttribute="top" secondItem="fyU-lL-jP4" secondAttribute="bottom" id="FoB-RZ-XdW"/>
+                            <constraint firstItem="BF7-Ii-I1f" firstAttribute="leading" secondItem="wmY-qq-REq" secondAttribute="leadingMargin" id="JmR-VT-1sh"/>
+                            <constraint firstItem="rQF-RL-vRI" firstAttribute="top" secondItem="BF7-Ii-I1f" secondAttribute="bottom" constant="19" id="NKi-DK-aVh"/>
+                            <constraint firstItem="rQF-RL-vRI" firstAttribute="leading" secondItem="wmY-qq-REq" secondAttribute="leadingMargin" id="RPi-4p-T9c"/>
+                            <constraint firstItem="akK-8Q-AfQ" firstAttribute="centerX" secondItem="wmY-qq-REq" secondAttribute="centerX" id="Svz-oX-2OH"/>
+                            <constraint firstAttribute="trailing" secondItem="6pU-Uf-Tdk" secondAttribute="trailing" id="Vjt-fx-BiH"/>
+                            <constraint firstItem="BF7-Ii-I1f" firstAttribute="trailing" secondItem="wmY-qq-REq" secondAttribute="trailingMargin" id="a3T-qt-wJc"/>
+                            <constraint firstItem="akK-8Q-AfQ" firstAttribute="trailing" secondItem="wmY-qq-REq" secondAttribute="trailingMargin" id="aRg-7V-ocL"/>
+                            <constraint firstItem="akK-8Q-AfQ" firstAttribute="leading" secondItem="wmY-qq-REq" secondAttribute="leadingMargin" id="cWM-wc-cXL"/>
+                            <constraint firstItem="H0M-4E-xMt" firstAttribute="leading" secondItem="sdV-aI-oSg" secondAttribute="trailing" constant="2" id="erb-wc-8Qm"/>
+                            <constraint firstItem="akK-8Q-AfQ" firstAttribute="top" secondItem="6pU-Uf-Tdk" secondAttribute="bottom" constant="19" id="gie-Qa-fs0"/>
+                            <constraint firstItem="H0M-4E-xMt" firstAttribute="top" secondItem="rQF-RL-vRI" secondAttribute="bottom" constant="2" id="kPt-Kg-NfR"/>
+                            <constraint firstItem="BF7-Ii-I1f" firstAttribute="top" secondItem="akK-8Q-AfQ" secondAttribute="bottom" constant="13" id="lai-Ux-pLO"/>
+                            <constraint firstItem="BF7-Ii-I1f" firstAttribute="centerX" secondItem="wmY-qq-REq" secondAttribute="centerX" id="mJt-2l-d0I"/>
+                            <constraint firstItem="sdV-aI-oSg" firstAttribute="top" secondItem="rQF-RL-vRI" secondAttribute="bottom" constant="2" id="qw9-H2-L1d"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="BF7-Ii-I1f" id="7O0-j7-vHG"/>
+                        <outlet property="mapView" destination="6pU-Uf-Tdk" id="yd6-Le-LeR"/>
+                        <outlet property="ratingLabel" destination="H0M-4E-xMt" id="UVS-LP-htM"/>
+                        <outlet property="tourGuyNameLabel" destination="rQF-RL-vRI" id="Abv-L5-YH8"/>
+                        <outlet property="tourNameLabel" destination="akK-8Q-AfQ" id="qKj-6z-PYa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z1w-wW-lnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="572" y="1310"/>
         </scene>
         <!--User Profile-->
         <scene sceneID="Mvz-wy-OzY">
@@ -186,10 +309,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JgZ-1M-0a0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144" y="1158"/>
+            <point key="canvasLocation" x="-118" y="1310"/>
         </scene>
     </scenes>
     <resources>
         <image name="addImg" width="29" height="29"/>
+        <image name="back" width="111" height="112"/>
     </resources>
 </document>

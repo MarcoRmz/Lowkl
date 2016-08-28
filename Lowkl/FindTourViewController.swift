@@ -142,6 +142,11 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     }
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print("this shit works!")
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let homeViewController: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("DetailView")
+        
+        self.presentViewController(homeViewController, animated: true, completion: nil)
         
     }
 

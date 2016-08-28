@@ -16,5 +16,5 @@ target 'Lowkl' do
   pod 'SVProgressHUD'
   pod 'GoogleMaps'
   pod 'M13Checkbox', '~> 2.1'
-
+  pod 'MGSwipeTableCell'
 end

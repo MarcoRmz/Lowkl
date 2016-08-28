@@ -186,12 +186,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4DB03191D7216BF006D664B /* Build configuration list for PBXNativeTarget "Lowkl" */;
 			buildPhases = (
+				187448F5466D9E6A6D4910FF /* 📦 Check Pods Manifest.lock */,
 				5AA57B6942D30B07929C8F86 /* [CP] Check Pods Manifest.lock */,
 				F4DB03031D7216BF006D664B /* Sources */,
 				F4DB03041D7216BF006D664B /* Frameworks */,
 				F4DB03051D7216BF006D664B /* Resources */,
 				53CA09558DD84524898E8CED /* [CP] Embed Pods Frameworks */,
 				36FB3C5CCCAB37149E3F74A8 /* [CP] Copy Pods Resources */,
+				C0D2BA1984CC5B1FE4268222 /* 📦 Embed Pods Frameworks */,
+				1ABD7343DFA5111D4D4FBC35 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +254,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		187448F5466D9E6A6D4910FF /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1ABD7343DFA5111D4D4FBC35 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lowkl/Pods-Lowkl-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		36FB3C5CCCAB37149E3F74A8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -294,6 +327,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C0D2BA1984CC5B1FE4268222 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lowkl/Pods-Lowkl-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

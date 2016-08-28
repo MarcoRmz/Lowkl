@@ -8,12 +8,13 @@
 
 import UIKit
 
-class GiveTour: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class GiveTour: UIViewController, UITableViewDelegate, UITableViewDataSource ,UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet var placeChosen: UILabel!
     @IBOutlet var pickerPlace: UIPickerView!
     
     let pickerData = ["Monterrey", "San Luis", "Cancun"]
+    let taken = ["Bahamas", "Kualalupur", "Fiji"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,5 +48,21 @@ class GiveTour: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.blueColor()])
         return myTitle
     }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCellWithIdentifier("CellToursTaken", forIndexPath: indexPath)
+            let take = taken[indexPath.row]
+            cell.textLabel?.text = take
+            return cell
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return taken.count
+    }
+    
 }
 

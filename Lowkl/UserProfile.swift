@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var imageUser: UIImageView!
@@ -29,6 +30,9 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         self.tableViewGiven.delegate = self
         self.tableViewGiven.dataSource = self
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

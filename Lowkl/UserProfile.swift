@@ -120,7 +120,7 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
                     }
                 })
             }
-            
+
             // Get guide value
             userDatabaseRef.child(self.userID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 self.guide = snapshot.value!["guide"] as! Bool
@@ -162,6 +162,11 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
         } else {
             // No user is signed in.
         }
+        
+        given = ["Monterrey","Cancun"]
+        
+        self.tableViewGiven.delegate = self
+        self.tableViewGiven.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -170,10 +175,17 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CellToursTaken", forIndexPath: indexPath)
-        let take = taken[indexPath.row]
-        cell.textLabel?.text = take
-        return cell
+        if(tableView.isEqual(tableViewTaken)){
+            let cell = tableView.dequeueReusableCellWithIdentifier("CellToursTaken", forIndexPath: indexPath)
+            let take = taken[indexPath.row]
+            cell.textLabel?.text = take
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCellWithIdentifier("CellToursGiven", forIndexPath: indexPath)
+            let give = given[indexPath.row]
+            cell.textLabel?.text = give
+            return cell
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -181,6 +193,10 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taken.count
+        if(tableView.isEqual(tableViewTaken)){
+            return taken.count
+        }else{
+            return given.count
+        }
     }
 }

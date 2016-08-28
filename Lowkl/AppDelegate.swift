@@ -11,6 +11,7 @@ import Firebase
 import GoogleMaps
 import GoogleMapsCore
 import FBSDKLoginKit
+import MGSwipeTableCell
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

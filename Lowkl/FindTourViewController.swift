@@ -205,6 +205,8 @@ class FindTourViewController: UIViewController, MKMapViewDelegate, CLLocationMan
             
             for children in snapshot.children {
                 print(children["name"]?!)
+                print(children)
+                print(children["description"]?!)
                 if children["name"]?!.description == InternalHelper.sharedInstance.tourName {
                     InternalHelper.sharedInstance.tourDescription = children["description"]!!.description
                 }

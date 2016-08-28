@@ -44,7 +44,7 @@ class TourDetailViewController: UIViewController, MKMapViewDelegate {
     }
     
     func centerMapOnLocation(location: CLLocationCoordinate2D) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, 500, 500)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, 900, 900)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
